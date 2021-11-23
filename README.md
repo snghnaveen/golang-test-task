@@ -30,8 +30,8 @@ Flags:
 - Example command :
 ```shell
 golang-test-task \
---docker-image bash \
---bash-command 'i=0; while [ $i -ne 10 ]; do i=$(($i+1)); echo "$i"; sleep 2; done' \
+--docker-image python \
+--bash-command  $'pip install pip -U && pip install tqdm && python -c \"import time\ncounter = 0\nwhile True:\n\tprint(counter)\n\tcounter = counter + 1\n\ttime.sleep(0.1)"' \
 --cloudwatch-group mytest123456789 \
 --cloudwatch-stream mytest987654321 \
 --aws-access-key-id <aws-access-key-id> \

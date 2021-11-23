@@ -56,7 +56,7 @@ func (t *task) pullDockerImage(c *client.Client) {
 func (t *task) createDockerContainer(c *client.Client) string {
 	containerCreated, err := c.ContainerCreate(context.TODO(), &container.Config{
 		Image: t.dockerImage,
-		Cmd:   []string{"bash", "-c", t.bashCommand},
+		Cmd:   []string{"sh", "-c", t.bashCommand},
 	}, &container.HostConfig{}, nil, nil, "")
 	if err != nil {
 		log.Fatal(err)
